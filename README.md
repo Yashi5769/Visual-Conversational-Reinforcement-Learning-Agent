@@ -46,3 +46,21 @@ graph LR
     E --> F[AI2-THOR Simulator];
     F -- Visual Feedback --> E;
     E -- Status Updates --> G[Web Dashboard];
+
+# VCRL_DKR Project Structure & Documentation
+
+```text
+VCRL_DKR/
+├── app.py                 # Main Web Application (Streamlit Interface)
+├── main.py                # CLI Entry Point (Terminal Mode)
+├── config.py              # Configuration Settings & API Keys
+├── requirements.txt       # Dependency List
+├── .env                   # API Keys (Hidden)
+├── models/
+│   ├── yolov8n.pt         # Computer Vision Model
+│   └── ppo_nav/           # Trained Reinforcement Learning Brain
+└── modules/
+    ├── agent.py           # Robot Control Logic (Movement, Physics)
+    ├── knowledge.py       # RAG System (ChromaDB Vector Store)
+    ├── planner.py         # LLM Interface (Prompt Engineering)
+    └── vision.py          # YOLO Wrapper for Object Detection
