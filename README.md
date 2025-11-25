@@ -32,6 +32,21 @@ Unlike traditional chatbots that live in text, this agent acts in a **photoreali
 * **RL Wandering:** A trained **PPO (Proximal Policy Optimization)** agent that can autonomously explore unknown environments without colliding with walls.
 
 ---
+VCRL_DKR/
+├── app.py                 # Main Web Application (Streamlit Interface)
+├── config.py              # Configuration Settings & API Keys
+├── requirements.txt       # Dependency List
+├── .env                   # API Keys (Hidden)
+├── models/
+│   ├── yolov8n.pt         # Computer Vision Model
+│   └── ppo_nav/           # Trained Reinforcement Learning Brain
+└── modules/
+    ├── agent.py           # Robot Control Logic (Movement, Physics, RL)
+    ├── knowledge.py       # RAG System (ChromaDB Vector Store)
+    ├── planner.py         # LLM Interface (Prompt Engineering)
+    └── vision.py          # YOLO Wrapper for Object Detection
+
+
 
 ## 🏗️ System Architecture
 
