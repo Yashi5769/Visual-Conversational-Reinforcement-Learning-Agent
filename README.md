@@ -146,3 +146,7 @@ streamlit run app.py
 ## 🛠️ Future Scope
 
 * **SLAM (Simultaneous Localization and Mapping):** Currently, the robot uses a pre-defined coordinate map. Future work involves building this map dynamically
+* **Voice Interaction:** Integrating Whisper (STT) and ElevenLabs (TTS) for full verbal communication.
+* **Open Vocabulary Vision:** Replacing YOLO with CLIP or DETIC to detect any object in the world without pre-training on specific classes.
+
+## 👨‍💻 Author - YASHI
