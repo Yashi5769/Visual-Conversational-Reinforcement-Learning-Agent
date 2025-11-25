@@ -31,10 +31,7 @@ Unlike traditional chatbots that live in text, this agent acts in a **photoreali
 * **Teleportation:** For known semantic locations (Kitchen, Bedroom).
 * **RL Wandering:** A trained **PPO (Proximal Policy Optimization)** agent that can autonomously explore unknown environments without colliding with walls.
 
-
-## 🏗️ System Architecture
-
-The project follows a modular pipeline:
+# VCRL_DKR Project
 
 ```mermaid
 graph LR
@@ -45,8 +42,7 @@ graph LR
     E --> F[AI2-THOR Simulator];
     F -- Visual Feedback --> E;
     E -- Status Updates --> G[Web Dashboard];
-
-exit:
+```
 
 ## 📂 Directory Structure
 
@@ -64,3 +60,89 @@ VCRL_DKR/
     ├── knowledge.py       # RAG System (ChromaDB Vector Store)
     ├── planner.py         # LLM Interface (Prompt Engineering)
     └── vision.py          # YOLO Wrapper for Object Detection
+```
+
+## ⚙️ Installation & Setup
+
+### 1. Prerequisites
+* **OS:** macOS (Silicon/Intel), Windows 10/11, or Linux.
+* **Python:** Version 3.10 or 3.11 (Strict requirement for AI2-THOR).
+
+### 2. Setup Virtual Environment
+
+```bash
+# Create environment
+python -m venv venv
+
+# Activate (Mac/Linux)
+source venv/bin/activate
+
+# Activate (Windows)
+.\venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure Secrets
+Create a file named `.env` in the root directory:
+
+```env
+GROQ_API_KEY="gsk_your_actual_key_here"
+# OPENAI_API_KEY="sk_..." (Optional fallback)
+HEADLESS_MODE="False"
+```
+
+### 5. Run the Application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🚀 Usage Scenarios
+
+### Scenario 1: The "Grand Finale" (Full Stack Demo)
+**User:** "I am hungry. Find an apple in the fridge and bring it to me."
+**Behavior:**
+1.  Planner infers location (Kitchen/Fridge).
+2.  Agent navigates to Kitchen.
+3.  Agent Opens the Fridge door.
+4.  Vision detects Apple inside.
+5.  Agent Grabs Apple.
+6.  Agent returns to User and Drops the Apple.
+
+### Scenario 2: Object Permanence & Physics
+**User:** "Open the microwave, check for food, and then close it."
+**Behavior:**
+1.  Robot approaches microwave.
+2.  Rotates to face it perfectly (Visual Servoing).
+3.  Opens door -> Scans -> Closes door.
+
+### Scenario 3: Autonomous Exploration
+**User:** "Go to the bedroom and wander around."
+**Behavior:**
+1.  Teleports to Bedroom.
+2.  Switches to RL Mode (Neural Network).
+3.  Drives autonomously avoiding obstacles.
+
+---
+
+## 🧠 Technical Modules Breakdown
+
+| Module | Description |
+| :--- | :--- |
+| **planner.py** | Uses Few-Shot Prompting with Llama-3 to generate strict JSON plans. Includes a robust Regex parser to handle LLM verbosity. |
+| **agent.py** | The core controller. Implements Visual Servoing (approach logic), Head Tracking (calculating pitch/yaw to face objects), and PPO Integration for wandering. |
+| **vision.py** | Wraps YOLOv8. Includes logic to map synonyms (e.g., "Couch" = "Sofa") and adjustable confidence thresholds. |
+| **gym_env.py** | A custom OpenAI Gym wrapper used to train the PPO agent on 84x84 grayscale images from the simulator. |
+
+---
+
+## 🛠️ Future Scope
+
+* **SLAM (Simultaneous Localization and Mapping):** Currently, the robot uses a pre-defined coordinate map. Future work involves building this map dynamically
