@@ -149,4 +149,5 @@ streamlit run app.py
 * **Voice Interaction:** Integrating Whisper (STT) and ElevenLabs (TTS) for full verbal communication.
 * **Open Vocabulary Vision:** Replacing YOLO with CLIP or DETIC to detect any object in the world without pre-training on specific classes.
 
-## 👨‍💻 Author - YASHI
+## 👨‍💻 Author - Yashi
+
