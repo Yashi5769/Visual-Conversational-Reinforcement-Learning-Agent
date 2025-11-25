@@ -31,7 +31,9 @@ Unlike traditional chatbots that live in text, this agent acts in a **photoreali
 * **Teleportation:** For known semantic locations (Kitchen, Bedroom).
 * **RL Wandering:** A trained **PPO (Proximal Policy Optimization)** agent that can autonomously explore unknown environments without colliding with walls.
 
----
+## 📂 Directory Structure
+
+```text
 VCRL_DKR/
 ├── app.py                 # Main Web Application (Streamlit Interface)
 ├── config.py              # Configuration Settings & API Keys
@@ -45,9 +47,6 @@ VCRL_DKR/
     ├── knowledge.py       # RAG System (ChromaDB Vector Store)
     ├── planner.py         # LLM Interface (Prompt Engineering)
     └── vision.py          # YOLO Wrapper for Object Detection
-
-
-
 ## 🏗️ System Architecture
 
 The project follows a modular pipeline:
